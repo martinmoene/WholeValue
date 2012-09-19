@@ -33,8 +33,8 @@ public:
 int main()
 {
     Date today = Date( Year(2012), July, Day(21) );  // OK
-//  today = Date( Day(21), July, Year(2012) );  // compile time error
-//  today = Date( July, Day(21), Year(2012) );  // compile time error
+//  today = Date( Day(21), July, Year(2012) );       // compile-time error
+//  today = Date( July, Day(21), Year(2012) );       // compile-time error
 }
 
 // g++ -Wall -I../../include/ -I%BOOST_INCLUDE% -o wiki-example1 wiki-example1.cpp
@@ -55,7 +55,7 @@ Dependencies
 Compilers known to work
 -------------------------
 * GCC 4.5.2
-* MSVC6 - requires `using namespace wv;` for streaming operators (VC6 lacks ADL).
+* MSVC6 - requires `using namespace wv;` for streaming operators (VC6 lacks [ADL](http://en.wikipedia.org/wiki/Argument-dependent_name_lookup)).
 
 ### References
 [1] Ward Cunningham. [The CHECKS Pattern Language of Information Integrity](http://c2.com/ppr/checks.html). C2 Wiki, 1994.<br>[2] Martin Fowler. [Quantity Pattern](http://martinfowler.com/eaaDev/quantity.html). Website.<br>[3] Bjarne Stroustrup. [Software Development for Infrastructure](http://www2.research.att.com/%7Ebs/Computer-Jan12.pdf). Computer, January 2012.<br>[4] This library is inspired on the presentation by Mark Radford: [Design Experiences in C++, p.23](http://www.twonine.co.uk/articles/GenProgGoesLive.pdf#Page=23). 2005.
