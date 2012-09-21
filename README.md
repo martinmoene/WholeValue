@@ -42,7 +42,7 @@ int main()
 
 Other Libraries
 -----------------
-If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better of with libraries such as
+If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better off with libraries such as
 - [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
 - Michael Kenniston's [Quantity Library](http://home.xnet.com/%7Emsk/quantity/quantity.html) ([Rationale](http://home.xnet.com/%7Emsk/quantity/quantity.html), Quantity [folder](http://www.xnet.com/%7Emsk/quantity)).
 I plan to release a version of this library that works with VC6 and more recent  compilers.
@@ -57,7 +57,7 @@ TBD
 
 Dependencies
 -------------------------
-[Boost.Operators](http://www.boost.org/doc/libs/1_51_0/libs/utility/operators.htm) can be used to generate part of the logical and arithmetic operators of the `bits` and `quantity` class templates in this library. Note however that this is optional.
+[Boost.Operators](http://www.boost.org/doc/libs/1_51_0/libs/utility/operators.htm) can be used to generate part of the logical and arithmetic operators of the `bits` and `quantity` class templates in this library. Note however that this is optional. If Boost.Operators is not used, the relevant operators are directly included in the classes in the conventional way.
 
 To use Boost.Operators, `#define WV_USE_BOOST_OPERATORS` before inclusion of header file `whole_value.h`. Boost version 1.46.1 is known to work with the compilers mentioned below.
 
