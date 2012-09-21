@@ -1,10 +1,10 @@
 Whole Value Idiom
 ===================
-The whole value idiom was identified by Ward Cunningham[1] and Martin Fowler[2]. This idiom supports type-rich programming which, as Bjarne Stroustrup advocates, is an important means to improve software reliability, adding to this: “but most current infrastructure software doesn’t systematically use the techniques I suggest.” [3]
+The whole value idiom[1] supports type-rich programming which, as Bjarne Stroustrup advocates, is an important means to improve software reliability, adding to this: “but most current infrastructure software doesn’t systematically use the techniques I suggest.” [2]
 
 Applying the whole value idiom where you would otherwise be tempted to use built-in types to represent domain values, gains you type checking and expressiveness.
 
-This single-header library provides an easy way to use the whole value idiom with built-in types in C++.[4]
+This single-header library provides an easy way to use the whole value idiom with built-in types in C++.[3]
 
 Example
 ---------
@@ -67,4 +67,4 @@ Compilers known to work
 * MSVC6 - requires `using namespace wv;` for streaming operators (VC6 lacks [ADL](http://en.wikipedia.org/wiki/Argument-dependent_name_lookup)).
 
 ### References
-[1] Ward Cunningham. [The CHECKS Pattern Language of Information Integrity](http://c2.com/ppr/checks.html). C2 Wiki, 1994.<br>[2] Martin Fowler. [Quantity Pattern](http://martinfowler.com/eaaDev/quantity.html). Website.<br>[3] Bjarne Stroustrup. [Software Development for Infrastructure](http://www2.research.att.com/%7Ebs/Computer-Jan12.pdf). Computer, January 2012.<br>[4] This library is inspired on the presentation by Mark Radford: [Design Experiences in C++, p.23](http://www.twonine.co.uk/articles/GenProgGoesLive.pdf#Page=23). 2005.
+[1] The whole value idiom was identified by Ward Cunningham[4] and Martin Fowler[5].<br>[2] Bjarne Stroustrup. [Software Development for Infrastructure](http://www2.research.att.com/%7Ebs/Computer-Jan12.pdf). Computer, January 2012.<br>[3] This library is inspired on the presentation by Mark Radford: [Design Experiences in C++, p.23](http://www.twonine.co.uk/articles/GenProgGoesLive.pdf#Page=23). 2005.<br>[4] Ward Cunningham. [The CHECKS Pattern Language of Information Integrity](http://c2.com/ppr/checks.html). C2 Wiki, 1994.<br>[5] Martin Fowler. [Quantity Pattern](http://martinfowler.com/eaaDev/quantity.html). Website.
