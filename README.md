@@ -6,7 +6,6 @@ Applying the whole value idiom where you would otherwise be tempted to use built
 
 This single-header library provides an easy way to use the whole value idiom with built-in types in C++.[4]
 
-
 Example
 ---------
 ```C++
@@ -41,16 +40,26 @@ int main()
 // cl -nologo -W3 -EHsc -I../../include/ -I%BOOST_INCLUDE% wiki-example1.cpp
 ```
 
+Other Libraries
+-----------------
+If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better of with libraries such as
+- [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
+- Michael Kenniston's [Quantity Library](http://home.xnet.com/%7Emsk/quantity/quantity.html) ([Rationale](http://home.xnet.com/%7Emsk/quantity/quantity.html), Quantity [folder](http://www.xnet.com/%7Emsk/quantity)).
+I plan to release a version of this library that works with VC6 and more recent  compilers.
+
 Usage
 -------
 ```C++
+#define WV_USE_BOOST_OPERATORS // optional
 #include "whole_value.h"
 TBD
 ```
 
 Dependencies
 -------------------------
-[Boost.Operators](http://www.boost.org/doc/libs/1_51_0/libs/utility/operators.htm) is used to generate part of the logical and arithmetic operators of the `quantity` class template in this library. Boost version 1.46.1 is known to work with the compilers mentioned below.
+[Boost.Operators](http://www.boost.org/doc/libs/1_51_0/libs/utility/operators.htm) can be used to generate part of the logical and arithmetic operators of the `bits` and `quantity` class templates in this library. Note however that this is optional.
+
+To use Boost.Operators, `#define WV_USE_BOOST_OPERATORS` before inclusion of header file `whole_value.h`. Boost version 1.46.1 is known to work with the compilers mentioned below.
 
 Compilers known to work
 -------------------------
