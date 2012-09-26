@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Whole Value" />
+		<Option pch_mode="2" />
+		<Option compiler="microsoft_visual_c_60" />
+		<Build>
+			<Target title="Win32 Release">
+				<Option output="Catch" prefix_auto="1" extension_auto="1" />
+				<Option object_output="D:\Dropbox\Accu\PhilNash\Projects\Catch\.objs" />
+				<Option type="1" />
+				<Option compiler="microsoft_visual_c_60" />
+				<Compiler>
+					<Add option="/Og" />
+					<Add option="/Ox" />
+					<Add option="/DNDEBUG" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="/W3" />
+		</Compiler>
+		<Unit filename="..\..\.gitignore" />
+		<Unit filename="..\..\LICENSE_1_0.txt" />
+		<Unit filename="..\..\README.md" />
+		<Unit filename="..\..\ReleaseNotes.txt" />
+		<Unit filename="..\..\include\whole_value.h" />
+		<Unit filename="..\Doc\wiki-example1.cpp" />
+		<Unit filename="..\Doc\wiki-example2.cpp" />
+		<Unit filename="..\Doc\wiki-example3.cpp" />
+		<Unit filename="..\Test\TestArithmetic.cpp" />
+		<Unit filename="..\Test\TestBits.cpp" />
+		<Unit filename="..\Test\TestMain.cpp" />
+		<Unit filename="..\Test\TestPerformance.cpp" />
+		<Unit filename="..\Test\TestQuantity.cpp" />
+		<Unit filename="..\Test\TestSafeBool.cpp" />
+		<Unit filename="..\Test\TestWholeValue.cpp" />
+		<Unit filename="..\VS2005\Test\compile.bat" />
+		<Unit filename="..\VS2005\Test\performance.bat" />
+		<Unit filename="..\VS2010\Test\compile.bat" />
+		<Unit filename="..\VS2010\Test\performance.bat" />
+		<Unit filename="..\VS6\Test\compile.bat" />
+		<Unit filename="..\VS6\Test\performance.bat" />
+		<Unit filename="..\gcc\Test\compile.bat" />
+		<Unit filename="..\gcc\Test\performance.bat" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="2" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
