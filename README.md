@@ -122,7 +122,7 @@ WV_DEFINE_TYPE(A, Quantity)
 WV_DEFINE_TYPE(B, Quantity)
 
 ```
-TBD - Quantity is the base type of Types A and B. This allows A and B to be compared, but not to replace one with the other. Passing arguments...
+Use this if you want to distinguish values of type A and B as function arguments, but otherwise want to freely mix values of type A and B in expressions. Here `WV_DEFINE_TYPE` creates types A and B with Quantity as their common base type.
 
 ### Interaction with underlying type
 

@@ -1,6 +1,6 @@
 Release Notes for WholeValue C++ Library.
 
-Release 1.0.0 - 2012-xx-xx
+Release 0.0.0 - 2012-09-26
 
 * First public release.
 ___
