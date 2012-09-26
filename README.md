@@ -40,7 +40,7 @@ int main()
 // cl -nologo -W3 -EHsc -I../../include/ -I%BOOST_INCLUDE% wiki-example1.cpp
 ```
 
-Other Libraries
+Other libraries
 -----------------
 If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better off with libraries such as
 - [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
@@ -49,7 +49,7 @@ I plan to release a version of this library that works with VC6 and more recent 
 
 Usage
 -------
-This library provides the following class templates that hold a value:
+This library provides the following class templates to hold a value:
 * `whole_value` - just holds a value
 * `bits` - provides bitwise operations
 * `arithmetic` - provides arithmetic operations
@@ -82,13 +82,37 @@ This type allows construction (default, initializer, copy), assignment, and all 
 #include "whole_value.h"
 WV_DEFINE_QUANTITY_TYPE(Quantity, double)
 ```
-This type allows construction (default, initializer, copy), assignment, all comparison operations and a subset of the arithmetic operations. Think of this type as representing a dimension: the available operations do not change the type's dimension. For example, the multiplication `Quantity *= Quantity` is not available (nor is `Quantity * Quantity`).
+This type allows construction (default, initializer, copy), assignment, all comparison operations and a subset of the arithmetic operations. Think of this type as representing a dimension: the available operations do not change the type's 'dimension'. For example, the multiplication `Quantity *= Quantity` is not available (nor is `Quantity * Quantity`).
 
 ```C++
 #include "whole_value.h"
 WV_DEFINE_SAFE_BOOL_TYPE(SafeBool)
 ```
 This creates a boolean type that has no adverse interactions with other types ([Safe Bool idiom](http://www.artima.com/cppsource/safebool.html)).
+
+```C++
+#include "whole_value.h"
+WV_DEFINE_SAFE_BOOL_TYPE(SafeBool)
+WV_DEFINE_SAFE_BOOL_TYPE(SafeBool2)
+
+int main()
+{
+    SafeBool safebool, safebool_( true );
+    SafeBool2 safebool2;
+
+    bool b = safebool;  // Ok
+//  int i = safebool;   // compile-time error
+
+    if ( safebool ) {}  // Ok
+
+    if ( safebool == safebool_ ) {}  // Ok
+//  if ( safebool == safebool2 ) {}  // compile-time error
+}
+
+// g++ -Wall -I../../include/ -I%BOOST_INCLUDE% -o wiki-example2 wiki-example2.cpp && wiki-example2
+// cl -nologo -W3 -EHsc -I../../include/ -I%BOOST_INCLUDE% wiki-example2.cpp && wiki-example2
+
+```
 
 ### Sub-type definitions
 
@@ -111,17 +135,18 @@ To allow interaction with the underlying type or types that are convertible to t
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_WHOLE_VALUE
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_BITS
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_ARITHMETIC
-#define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_QUANTITY_ALLOW_
+#define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_QUANTITY
 
 #include "whole_value.h"
 ```
 
 ### Output
 
-To make a type defined with `WV_DEFINE...` streamable, define the desired operator with or without io manipulators as follows.
+To make a type defined with `WV_DEFINE...` streamable, define the desired operator with or without io manipulators.
 
 ```C++
 #include "whole_value.h"
+#include <iomanip>
 #include <iostream>
 
 WV_DEFINE_QUANTITY_TYPE(Quantity, double)
@@ -136,31 +161,41 @@ int main()
 {
     Acceleration acc(9.8);
     Speed spd(330);
-    std::cout << "acc:" << acc ", spd:" << spd << std::endl;
+    std::cout << "acc:" << acc << ", spd:" << spd << std::endl;
 }
+
+// g++ -Wall -I../../include/ -I%BOOST_INCLUDE% -o wiki-example3 wiki-example3.cpp && wiki-example3
+// cl -nologo -W3 -EHsc -I../../include/ -I%BOOST_INCLUDE% wiki-example3.cpp && wiki-example3
 ```
-To stream sub types, you only need to define a streaming operator for the base class.
+To stream sub types, you only need to define a streaming operator for its base class.
 
 ### Convenience functions
 
 ```C++
-template < typename T, typename U >
-inline whole_value<T,U> abs( whole_value<T,U> const & x );
+// absolute value:
 
-template < typename T, typename U >
-inline arithmetic<T,U> abs( arithmetic<T,U> const & x );
+template < typename T, typename U > inline whole_value<T,U> abs( whole_value<T,U> const & x );
+template < typename T, typename U > inline  arithmetic<T,U> abs(  arithmetic<T,U> const & x );
+template < typename T, typename U > inline    quantity<T,U> abs(    quantity<T,U> const & x );
 
-template < typename T, typename U >
-inline quantity<T,U> abs( quantity<T,U> const & x );
+// value as underlying type:
 
-template < typename T, typename U >
-inline T to_value( whole_value<T,U> const & x );
+template < typename T, typename U > inline T to_value( whole_value<T,U> const & x );
+template < typename T, typename U > inline T to_value(        bits<T,U> const & x );
+template < typename T, typename U > inline T to_value(  arithmetic<T,U> const & x );
+template < typename T, typename U > inline T to_value(    quantity<T,U> const & x );
 
-template < typename T, typename U >
-inline long to_integer( whole_value<T,U> const & x );
+// value as integer (long):
 
-template < typename T, typename U >
-inline double to_real( whole_value<T,U> const & x );
+template < typename T, typename U > inline long to_integer( whole_value<T,U> const & x );
+template < typename T, typename U > inline long to_integer(  arithmetic<T,U> const & x );
+template < typename T, typename U > inline long to_integer(    quantity<T,U> const & x );
+
+// value as real (double):
+
+template < typename T, typename U > inline double to_real( whole_value<T,U> const & x );
+template < typename T, typename U > inline double to_real(  arithmetic<T,U> const & x );
+template < typename T, typename U > inline double to_real(    quantity<T,U> const & x );
 ```
 
 Dependencies
@@ -180,14 +215,17 @@ Performance
 ------------
 
 ```
-Relative performance
+Relative performance (higher is better)
 
-Compiler        Option   double   Real   Derived
-------------------------------------------------
-GCC 4.5.2         -O2      1       1        1
-MS VC6/VS6        -O2      .       .        .
-MS VC8/VS2005     -O2      .       .        .
-MS VC2010/VS2010  -O2      .       .        .
+Compiler        Option : double : Real  Real.B  Real.F : Derived  Derived.B  Derived.F
+-----------------------+--------+----------------------+------------------------------
+GCC 4.5.2         -O2  :  1     :  1     1       1     :   0.7      0.7        0.7
+MS VC6/VS6        -O2  :  1.2   :  1.2   0.1     0.1   :   0.95     0.05       0.05
+MS VC8/VS2005     -O2  :  1.1   :  0.4   0.4     0.4   :   0.4      0.4        0.4
+MS VC2010/VS2010  -O2  :  1.2   :  0.4   0.4     0.4   :   0.4      0.4        0.4
+
+.B - with -DWV_USE_BOOST_OPERATORS
+.F - with -DWV_DEFINE_OPERATORS_IN_TERMS_OF_A_MINIMAL_NUMBER_OF_FUNDAMENTAL_OPERATORS
 
 WV_DEFINE_ARITHMETIC_TYPE(Real, double)
 WV_DEFINE_TYPE(Derived, Real)
