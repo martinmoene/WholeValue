@@ -66,6 +66,7 @@
 #define WV_DEFINE_TYPE( sub, super ) \
     class sub : public super { \
         public: sub() : super() {} \
+        public: sub(super const & x) : super(x) {} \
         public: explicit sub(value_type const x) : super(x) {} \
     };
 
