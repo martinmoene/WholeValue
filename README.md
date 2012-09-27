@@ -32,6 +32,7 @@ public:
 int main()
 {
     Date today = Date( Year(2012), July, Day(21) );  // OK
+//  today = Date( 2012, July, 21 );                  // compile-time error
 //  today = Date( Day(21), July, Year(2012) );       // compile-time error
 //  today = Date( July, Day(21), Year(2012) );       // compile-time error
 }
@@ -42,6 +43,9 @@ int main()
 
 Other libraries
 -----------------
+Similar facilities.
+- Matthew Wilson's True Typedef in Imperfect C++. (Ch 18.4) and available from the [STLSoft C++ Libraries](http://stlsoft.org/).
+
 If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better off with libraries such as
 - [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
 - Michael Kenniston's [Quantity Library](http://home.xnet.com/%7Emsk/quantity/quantity.html) ([Rationale](http://home.xnet.com/%7Emsk/quantity/quantity.html), Quantity [folder](http://www.xnet.com/%7Emsk/quantity)).<br>
@@ -132,7 +136,7 @@ To allow interaction with the underlying type or types that are convertible to t
 // define:
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE
 // or, one or more of:
-#define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_WHOLE_VALUE
+#define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_VALUE
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_BITS
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_ARITHMETIC
 #define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_QUANTITY
@@ -174,28 +178,28 @@ To stream sub types, you only need to define a streaming operator for its base c
 ```C++
 // absolute value:
 
-template < typename T, typename U > inline whole_value<T,U> abs( whole_value<T,U> const & x );
-template < typename T, typename U > inline  arithmetic<T,U> abs(  arithmetic<T,U> const & x );
-template < typename T, typename U > inline    quantity<T,U> abs(    quantity<T,U> const & x );
+template <typename T, typename U> inline whole_value<T,U> abs( whole_value<T,U> const & x );
+template <typename T, typename U> inline  arithmetic<T,U> abs(  arithmetic<T,U> const & x );
+template <typename T, typename U> inline    quantity<T,U> abs(    quantity<T,U> const & x );
 
 // value as underlying type:
 
-template < typename T, typename U > inline T to_value( whole_value<T,U> const & x );
-template < typename T, typename U > inline T to_value(        bits<T,U> const & x );
-template < typename T, typename U > inline T to_value(  arithmetic<T,U> const & x );
-template < typename T, typename U > inline T to_value(    quantity<T,U> const & x );
+template <typename T, typename U> inline T to_value( whole_value<T,U> const & x );
+template <typename T, typename U> inline T to_value(        bits<T,U> const & x );
+template <typename T, typename U> inline T to_value(  arithmetic<T,U> const & x );
+template <typename T, typename U> inline T to_value(    quantity<T,U> const & x );
 
 // value as integer (long):
 
-template < typename T, typename U > inline long to_integer( whole_value<T,U> const & x );
-template < typename T, typename U > inline long to_integer(  arithmetic<T,U> const & x );
-template < typename T, typename U > inline long to_integer(    quantity<T,U> const & x );
+template <typename T, typename U> inline long to_integer( whole_value<T,U> const & x );
+template <typename T, typename U> inline long to_integer(  arithmetic<T,U> const & x );
+template <typename T, typename U> inline long to_integer(    quantity<T,U> const & x );
 
 // value as real (double):
 
-template < typename T, typename U > inline double to_real( whole_value<T,U> const & x );
-template < typename T, typename U > inline double to_real(  arithmetic<T,U> const & x );
-template < typename T, typename U > inline double to_real(    quantity<T,U> const & x );
+template <typename T, typename U> inline double to_real( whole_value<T,U> const & x );
+template <typename T, typename U> inline double to_real(  arithmetic<T,U> const & x );
+template <typename T, typename U> inline double to_real(    quantity<T,U> const & x );
 ```
 
 Dependencies

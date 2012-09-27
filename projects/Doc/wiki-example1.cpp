@@ -21,6 +21,7 @@ public:
 int main()
 {
     Date today = Date( Year(2012), July, Day(21) );  // OK
+//  today = Date( 2012, July, 21 );                  // compile-time error
 //  today = Date( Day(21), July, Year(2012) );       // compile-time error
 //  today = Date( July, Day(21), Year(2012) );       // compile-time error
 }
