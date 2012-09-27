@@ -44,7 +44,7 @@ int main()
 Other libraries
 -----------------
 Similar facilities.
-- Matthew Wilson's True Typedef in Imperfect C++. (Ch 18.4) and available from the [STLSoft C++ Libraries](http://stlsoft.org/).
+- Matthew Wilson's True Typedef in Imperfect C++ (Ch 18.4) and available from the [STLSoft C++ Libraries](http://stlsoft.org/).
 
 If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better off with libraries such as
 - [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
