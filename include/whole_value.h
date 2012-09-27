@@ -142,6 +142,7 @@
 # if defined( G_WV_COMPILER_IS_MSVC6 )
 #  include <cstdlib>
    namespace std { using ::abort; }
+#  define BOOST_FORCE_SYMMETRIC_OPERATORS
 # endif
 # include <boost/operators.hpp>
 #endif
