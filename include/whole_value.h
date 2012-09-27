@@ -1,6 +1,6 @@
 /*
  * whole_value.h
- * whole_value, bits, quantity and safe_bool classes.
+ * whole_value, bits, arithmetic, quantity and safe_bool classes.
  *
  * Created by Martin on 16 September 2012.
  * Copyright 2012 Universiteit Leiden. All rights reserved.
@@ -13,7 +13,7 @@
  * Macros to control behaviour:
  * - WV_USE_BOOST_OPERATORS: Define macro WV_USE_BOOST_OPERATORS to use
  *   Boost.Operators to defined part of the bitwise function for bits<> and
- *   arithmetic functions for quantity<>.
+ *   arithmetic functions for arithmetic<> and quantity<>.
  *
  * - WV_DEFINE_OPERATORS_IN_TERMS_OF_A_MINIMAL_NUMBER_OF_FUNDAMENTAL_OPERATORS
  *   If WV_USE_BOOST_OPERATORS is NOT defined, this controls whether the
@@ -108,13 +108,13 @@
 #endif
 
 #if defined( WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE )
-# define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_WHOLE_VALUE
+# define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_VALUE
 # define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_BITS
 # define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_ARITHMETIC
 # define WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_QUANTITY
 #endif
 
-#if defined( WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_WHOLE_VALUE )
+#if defined( WV_ALLOW_CONVERSION_FROM_UNDERLYING_TYPE_FOR_VALUE )
 # define WV_EXPLICIT_WHOLE_VALUE
 #else
 # define WV_EXPLICIT_WHOLE_VALUE explicit
@@ -393,7 +393,7 @@ public:
     }
 
     /*
-     * less-than operator; defined as friend to enable 7==x unless
+     * less-than operator; defined as friend to enable 7<x unless
      * initializing constructor is declared explicit.
      */
     friend bool operator<( arithmetic const & x, arithmetic const & y )
@@ -557,7 +557,7 @@ public:
     }
 
     /*
-     * less-than operator; defined as friend to enable 7==x unless
+     * less-than operator; defined as friend to enable 7<x unless
      * initializing constructor is declared explicit.
      */
     friend bool operator<( quantity const & x, quantity const & y )
