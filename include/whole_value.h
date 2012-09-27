@@ -401,12 +401,12 @@ public:
         return x.m_value < y.m_value;
     }
 
-    arithmetic operator+()
+    arithmetic operator+() const
     {
         return *this;
     }
 
-    arithmetic operator-()
+    arithmetic operator-() const
     {
         return arithmetic( -m_value );
     }
@@ -565,12 +565,12 @@ public:
         return x.m_value < y.m_value;
     }
 
-    quantity operator+()
+    quantity operator+() const
     {
         return *this;
     }
 
-    quantity operator-()
+    quantity operator-() const
     {
         return quantity( -this->m_value );
     }
