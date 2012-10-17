@@ -224,15 +224,19 @@ Relative performance (higher is better)
 Compiler        Option : double : Real  Real.B  Real.F : Derived  Derived.B  Derived.F
 -----------------------+--------+----------------------+------------------------------
 GCC 4.5.2         -O2  :  1     :  1     1       1     :   0.7      0.7        0.7
-MS VC6/VS6        -O2  :  1.2   :  1.2   0.1     0.1   :   0.95     0.05       0.05
+MS VC6/VS6        -O2  :  1.2   :  1.2   0.1     0.1   :   0.95 *   0.05       0.05
 MS VC8/VS2005     -O2  :  1.1   :  0.4   0.4     0.4   :   0.4      0.4        0.4
 MS VC2010/VS2010  -O2  :  1.2   :  0.4   0.4     0.4   :   0.4      0.4        0.4
 
 .B - with -DWV_USE_BOOST_OPERATORS
 .F - with -DWV_DEFINE_OPERATORS_IN_TERMS_OF_A_MINIMAL_NUMBER_OF_FUNDAMENTAL_OPERATORS
 
+ * - significantly worse seen on Intel Pentium M Processor, xxkB L1 Data, xxkB L1 Instruction, 1.50 GHz
+
 WV_DEFINE_ARITHMETIC_TYPE(Real, double)
 WV_DEFINE_TYPE(Derived, Real)
+
+Measured on AMD Athlon 64 X2 Dual Core Processor 5600+, 64kB L1 Data, 64kB L1 Instruction, 512kB L2, 3.2 GB RAM
 ```
 
 Compilers known to work
