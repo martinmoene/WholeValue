@@ -49,8 +49,8 @@ Similar facilities.
 If dimensions play a prime role in your computations, e.g. they are primarily physics-oriented, then you may be better off with libraries such as
 - [Boost.Units](http://www.boost.org/doc/libs/1_51_0/libs/units/) for zero-overhead dimensional analysis and unit/quantity manipulation and conversion.
 - Michael Kenniston's [Quantity Library](http://home.xnet.com/%7Emsk/quantity/quantity.html) ([Rationale](http://home.xnet.com/%7Emsk/quantity/quantity.html), Quantity [folder](http://www.xnet.com/%7Emsk/quantity)).<br>
-- [PhysUnits-CT](https://github.com/martinmoene/PhysUnits-CT) A C++ library for compile-time dimensional analysis and unit/quantity manipulation and conversion. Derived from Michael Kenniston's Quantity Library.
-- [PhysUnits-RT](https://github.com/martinmoene/PhysUnits-RT) A C++ library for run-time dimensional analysis and unit/quantity manipulation and conversion. Derived from PhysUnits-CT.
+- [PhysUnits-CT](https://github.com/martinmoene/PhysUnits-CT), a C++ library for compile-time dimensional analysis and unit/quantity manipulation and conversion. Derived from Michael Kenniston's Quantity Library.
+- [PhysUnits-RT](https://github.com/martinmoene/PhysUnits-RT), a C++ library for run-time dimensional analysis and unit/quantity manipulation and conversion. Derived from PhysUnits-CT.
 
 Usage
 -------
